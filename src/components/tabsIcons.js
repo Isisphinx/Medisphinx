@@ -9,7 +9,7 @@ import ScheduleIcon from '@material-ui/icons/Schedule'
 import AppsIcon from '@material-ui/icons/Apps'
 import ImageIcon from '@material-ui/icons/Image'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   noDecor: {
     textDecoration: 'none',
   },
