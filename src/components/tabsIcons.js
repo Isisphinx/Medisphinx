@@ -19,7 +19,7 @@ const SimpleTabs = () => {
   const classes = useStyles()
   const [value, setValue] = React.useState(0)
 
-  const handleChange = (event, newValue) => {
+  const handleChange = (_, newValue) => {
     setValue(newValue)
   }
   return (
