@@ -9,8 +9,8 @@ export default ({ element }) => {
   const store = configureStore()
   return (
     <Provider store={store}>
-      {element}
       <FakeList />
+      {element}
     </Provider>
   )
 }
