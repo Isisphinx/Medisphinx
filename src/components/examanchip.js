@@ -28,7 +28,13 @@ export default function Chips() {
   return (
     <div className={classes.root}>
       <Chip
-        label="examen"
+        label="radio Genou"
+        onClick={handleClick}
+        onDelete={handleDelete}
+        deleteIcon={<DoneIcon />}
+      />
+        <Chip
+        label="Echo genou"
         onClick={handleClick}
         onDelete={handleDelete}
         deleteIcon={<DoneIcon />}
