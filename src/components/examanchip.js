@@ -6,7 +6,7 @@ import DoneIcon from '@material-ui/icons/Done';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'left',
     flexWrap: 'wrap',
     '& > *': {
       margin: theme.spacing(0.5),
