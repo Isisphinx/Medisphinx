@@ -25,7 +25,7 @@ export default function Chips() {
     console.info('You clicked the delete icon.');
   };
 
-  const nb = getRandomInt(3)
+  const nb = getRandomInt(2)
 
   console.log(nb)
 
