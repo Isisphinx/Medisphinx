@@ -8,8 +8,6 @@ function getRandomInt(max) {
 export default function Chips() {
   const nb = getRandomInt(2)
 
-  console.log(nb)
-
   if (nb === 0)
     return (
       <div>
