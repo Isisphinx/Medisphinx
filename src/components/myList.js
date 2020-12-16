@@ -13,7 +13,7 @@ const MyList = () => {
   const Users = useSelector((state) => state.fakelist.value)
   const name = Users.map((user) => (
     <ListItem button key={user.uuid}>
-      <ListItemText primary={`${user.lastname} ${user.firstname} ${user.age} ans`} secondary={<Chips/>}/>
+      <ListItemText primary={`${user.lastname} ${user.firstname} ${user.age} ans ${user.lastname.substring(0, 3)}`} secondary={<Chips/>}/>
     </ListItem>
   ))
 

@@ -2,8 +2,9 @@ import React from 'react'
 import MyList from '../components/myList'
 import TextField from '@material-ui/core/TextField';
 
-const Home = () => <div>
+const Home = () =>
+  <div>
     <TextField id="standard-basic" label="Standard" />
-    <MyList />
-</div>
+    <MyList/>
+  </div>
 export default Home
