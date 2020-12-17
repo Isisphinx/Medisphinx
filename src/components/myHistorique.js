@@ -12,7 +12,7 @@ const MyHistorique = () => {
   const Users = useSelector((state) => state.fakelist.value)
   const name = Users.map((user) => (
     <ListItem button key={user.uuid}>
-      <ListItemText primary={`${user.lastname} ${user.firstname} ${user.age} ans`} secondary={user.examen}/>
+      <ListItemText primary={`${user.lastname} ${user.firstname} ${user.age} ans`} secondary={user.examen} />
     </ListItem>
   ))
 
