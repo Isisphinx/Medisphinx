@@ -12,20 +12,26 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction'
 const ListItem = patchBaseButtonComponent(MuiListItem)
 // Need to patch List button to use gatsby link
 
+const LisItems = ({ users }) => {
+  return (
+    <List component='nav'>
+      {users.map((user) => (
+        <ListItem button key={user.uuid}>
+          <ListItemText primary={`${user.lastname} ${user.firstname} ${user.age} ans`} secondary={<Chips />} />
+          {user.lastname.substring(0, 3)}
+          <ListItemSecondaryAction>
+            <IconButton>
+              <CreateIcon />
+            </IconButton>
+          </ListItemSecondaryAction>
+        </ListItem>
+      ))}
+    </List>
+  )
+}
 const MyList = () => {
-  const Users = useSelector((state) => state.fakelist.value)
-  const name = Users.map((user) => (
-    <ListItem button key={user.uuid}>
-      <ListItemText primary={`${user.lastname} ${user.firstname} ${user.age} ans`} secondary={<Chips />} />
-      {user.lastname.substring(0, 3)}
-      <ListItemSecondaryAction>
-        <IconButton>
-          <CreateIcon />
-        </IconButton>
-      </ListItemSecondaryAction>
-    </ListItem>
-  ))
+  const users = useSelector((state) => state.fakelist.value)
 
-  return <List component='nav'>{name}</List>
+  return users ? <LisItems users={users} /> : 'loading'
 }
 export default MyList
