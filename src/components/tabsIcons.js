@@ -27,7 +27,7 @@ const SimpleTabs = () => {
       <AppBar position='static'>
         <Tabs value={value} onChange={handleChange} variant="fullWidth">
           <Tab icon={<ImageIcon />} to='/' component={Link} className={classes.noDecor} />
-          <Tab icon={<ScheduleIcon />} to='/demo' component={Link} className={classes.noDecor} />
+          <Tab icon={<ScheduleIcon />} to='/historique' component={Link} className={classes.noDecor} />
           <Tab icon={<PermContactCalendarIcon />} to='/demo' component={Link} className={classes.noDecor} />
           <Tab icon={<AppsIcon />} to='/demo' component={Link} className={classes.noDecor} />
         </Tabs>
