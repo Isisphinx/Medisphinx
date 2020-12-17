@@ -2,7 +2,7 @@ import React from 'react'
 import MyHistorique from '../components/myHistorique'
 import TextField from '@material-ui/core/TextField'
 import SearchIcon from '@material-ui/icons/Search'
-import ToggleButton from '../components/RadioButton'
+import ToggleButton from '../components/ToggleButton'
 
 const Historique = () =>
   <div>
