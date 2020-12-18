@@ -3,6 +3,7 @@ import MyList from '../components/myList'
 import TextField from '@material-ui/core/TextField'
 import SearchIcon from '@material-ui/icons/Search'
 import InputAdornment from '@material-ui/core/InputAdornment'
+import MySwitch from '../components/mySwitch'
 
 const Home = () => (
   <div>
@@ -16,6 +17,7 @@ const Home = () => (
         ),
       }}
     />
+    <MySwitch/>
     <MyList />
   </div>
 )
