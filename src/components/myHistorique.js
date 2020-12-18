@@ -8,14 +8,22 @@ import patchBaseButtonComponent from 'gatsby-material-ui-components/lib/patch-ba
 const ListItem = patchBaseButtonComponent(MuiListItem)
 // Need to patch List button to use gatsby link
 
-const MyHistorique = () => {
-  const Users = useSelector((state) => state.fakelist.value)
-  const name = Users.map((user) => (
+const Historique = ({ users }) => {
+  return (
+  <List component='nav'>
+  {users.map((user) => (
     <ListItem button key={user.uuid}>
       <ListItemText primary={`${user.lastname} ${user.firstname} ${user.age} ans`} secondary={user.examen} />
+      {user.lastname.substring(0, 3)}
     </ListItem>
-  ))
+  ))}
+</List>
+  )
+}
 
-  return <List component='nav'>{name}</List>
+const MyHistorique = () => {
+  const users = useSelector((state) => state.fakelist.value)
+
+  return users ? <Historique users={users} /> : 'loading'
 }
 export default MyHistorique
