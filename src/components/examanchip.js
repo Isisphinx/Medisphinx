@@ -5,20 +5,22 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max))
 }
 
-export default function Chips() {
-  const nb = getRandomInt(2)
-
+const Chips = ({users}) => {
+ const nb = getRandomInt(2)
   if (nb === 0)
     return (
       <div>
-        <Chip label='radio Genou' />
+        <Chip label={users} />
       </div>
     )
   else if (nb > 0)
     return (
       <div>
-        <Chip label='radio Genou' />
+        <Chip label={users} />
         <Chip label='Echo genou' />
       </div>
     )
 }
+
+
+export default Chips
