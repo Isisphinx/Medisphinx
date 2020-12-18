@@ -17,7 +17,7 @@ const Chips = ({users}) => {
     return (
       <div>
         <Chip label={users} />
-        <Chip label='Echo genou' />
+        <Chip label='Echo bras' />
       </div>
     )
 }
