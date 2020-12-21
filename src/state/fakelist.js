@@ -7,16 +7,13 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max))
 }
 
+const array = ['Radio genou','Echo genou','Radio epaule','Echo epaule']
+
 function createexamen() {
-  const nb = getRandomInt(4)
-  if (nb === 0)
-    return ('Radio genou')
-  if (nb === 1)
-    return ('Echo genou')
-  if (nb === 2)
-    return ('Radio epaule')
-  if (nb === 3)
-    return ('Echo epaule')
+  const nb1 = getRandomInt(4)
+  const nb2 = getRandomInt(4)
+  const examen = [array[nb1], array[nb2]]
+  return (examen)
 }
 
 const createUser = () => ({
