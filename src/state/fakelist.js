@@ -7,15 +7,21 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max))
 }
 
-const array = ['Radio genou','Echo genou','Radio epaule','Echo epaule']
+const array = ['Radio genou', 'Echo genou', 'Radio epaule', 'Echo epaule']
 
 function createexamen() {
   const nb1 = getRandomInt(4)
   const nb2 = getRandomInt(4)
-  if (nb1 === nb2)
-    return (createexamen())
-  const examen = [array[nb1], array[nb2]]
-  return (examen)
+  const nbexamen = getRandomInt(2)
+  if (nb1 === nb2) return createexamen()
+  if (nbexamen === 0) {
+    const examen = [array[nb1]]
+    return examen
+  }
+  if (nbexamen === 1) {
+    const examen = [array[nb1], array[nb2]]
+    return examen
+  }
 }
 
 const createUser = () => ({
@@ -35,7 +41,7 @@ const users = createUsers()
 
 const SetFakeList = () => {
   const dispatch = useDispatch()
-  
+
   useEffect(() => {
     dispatch(setRedux(users))
   })
