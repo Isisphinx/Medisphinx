@@ -10,14 +10,14 @@ const Chips = ({users}) => {
   if (nb === 0)
     return (
       <div>
-        <Chip label={users} />
+        <Chip label={users[0]} />
       </div>
     )
   else if (nb > 0)
     return (
       <div>
-        <Chip label={users} />
-        <Chip label='Echo bras' />
+        <Chip label={users[0]} />
+        <Chip label={users[1]} />
       </div>
     )
 }
