@@ -4,10 +4,8 @@ import Chip from '@material-ui/core/Chip'
 const Chips = ({ users }) => {
   return (
     <div>
-      {users.map((users, id) => (
-        <div key={users.id}>
-          <Chip label={users} />
-        </div>
+      {users.map((users, id) => ( 
+          <Chip key={id} label={users} />
       ))}
     </div>
   )
