@@ -12,6 +12,8 @@ const array = ['Radio genou','Echo genou','Radio epaule','Echo epaule']
 function createexamen() {
   const nb1 = getRandomInt(4)
   const nb2 = getRandomInt(4)
+  if (nb1 === nb2)
+    return (createexamen())
   const examen = [array[nb1], array[nb2]]
   return (examen)
 }
