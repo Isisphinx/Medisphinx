@@ -17,7 +17,7 @@ const LisItems = ({ users }) => {
     <List component='nav'>
       {users.map((user) => (
         <ListItem button key={user.uuid}>
-          <ListItemText primary={`${user.lastname} ${user.firstname} ${user.age} ans`} secondary={<Chips users={user.examen} />} />
+          <ListItemText primary={`${user.lastname} ${user.firstname} ${user.age} ans`} secondaryTypographyProps={{ component: 'div' }} secondary={<Chips users={user.examen}/>}/>
           {user.lastname.substring(0, 3)}
           <ListItemSecondaryAction>
             <IconButton>
