@@ -46,7 +46,7 @@ export default function HorizontalLinearStepper() {
   const steps = getSteps();
 
   const isStepOptional = (step) => {
-    return step === 1;
+    return step === 7;
   };
 
   const isStepSkipped = (step) => {
