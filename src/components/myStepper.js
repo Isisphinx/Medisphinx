@@ -5,7 +5,7 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import MyListe from '../components/myList'
+import Historique from '../components/myHistorique'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +27,7 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <MyListe/>
+      return <Historique/>
     case 1:
       return 'What is an ad group anyways?';
     case 2:
@@ -118,7 +118,7 @@ export default function HorizontalLinearStepper() {
           </div>
         ) : (
           <div>
-            <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            <div>{getStepContent(activeStep)}</div>
             <div>
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
