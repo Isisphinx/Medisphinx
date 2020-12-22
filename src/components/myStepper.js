@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['step 1', 'Create an ad group', 'Create an ad'];
+  return ['Date de Naissance', 'Noms', 'Dossier', 'Examens'];
 }
 
 function getStepContent(step) {
@@ -93,9 +93,6 @@ export default function HorizontalLinearStepper() {
         {steps.map((label, index) => {
           const stepProps = {};
           const labelProps = {};
-          if (isStepOptional(index)) {
-            labelProps.optional = <Typography variant="caption">Optional</Typography>;
-          }
           if (isStepSkipped(index)) {
             stepProps.completed = false;
           }
