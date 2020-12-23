@@ -13,7 +13,7 @@ const Historique = ({ users }) => {
   <List component='nav'>
   {users.map((user) => (
     <ListItem button key={user.uuid}>
-      <ListItemText primary={`${user.lastname} ${user.firstname} ${user.age} ans`} secondary={` ${user.examen} `} />
+      <ListItemText primary={`${user.lastname} ${user.firstname} ${user.age} ans 11/12/2020 12H14`} secondary={` ${user.examen} `} />
       {user.lastname.substring(0, 3)}
     </ListItem>
   ))}
