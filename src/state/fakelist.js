@@ -23,6 +23,14 @@ function createexamen() {
     return examen
   }
 }
+function createdateBirth () {
+  const fulldate = faker.date.recent()
+  const day = fulldate.getDate()
+  const month = fulldate.getMonth()
+  const years = fulldate.getFullYear()
+
+  return (`${day}/${month}/${years}`)
+}
 
 const createUser = () => ({
   uuid: faker.random.uuid(),
@@ -32,8 +40,9 @@ const createUser = () => ({
   image: faker.image.avatar(),
   firstname: faker.name.firstName(),
   lastname: faker.name.lastName(),
-  age: faker.random.number({ min: 0, max: 80 }),
+  age: faker.random.number({ min: 5, max: 80 }),
   examen: createexamen(),
+  datebirth: createdateBirth(),
 })
 
 const createUsers = (numUsers = 5) => Array.from({ length: numUsers }, createUser)
