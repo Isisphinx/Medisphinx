@@ -6,6 +6,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import MyDateofBirth from '../components/myDateofBirth'
+import MyPatientName from '../components/myPatientName'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +30,7 @@ function getStepContent(step) {
     case 0:
       return <MyDateofBirth/>
     case 1:
-      return 'What is an ad group anyways?';
+      return <MyPatientName/>;
     case 2:
       return 'This is the bit I really care about!';
     case 3:
