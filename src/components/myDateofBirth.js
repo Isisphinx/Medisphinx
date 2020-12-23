@@ -6,7 +6,8 @@ const myDateofBirh = () => {
     return (
     <div>
         <TextField
-        id='input-with-icon-textfield'
+        id='date of birth'
+        label='date de naissance'
         />
     </div>
     )
