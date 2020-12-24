@@ -1,8 +1,7 @@
 import React from 'react'
 import TextField from '@material-ui/core/TextField'
 
-
-const myDateofBirh = () => {
+const myDateofBirth = () => {
     return (
     <div>
         <TextField
@@ -13,4 +12,4 @@ const myDateofBirh = () => {
     )
 }
 
-export default myDateofBirh
+export default myDateofBirth
