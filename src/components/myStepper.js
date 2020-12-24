@@ -32,7 +32,7 @@ function getStepContent(step) {
     case 1:
       return <MyPatientName/>;
     case 2:
-      return 'This is the bit I really care about!';
+      return 'Dossiers';
     case 3:
       return 'Examen'
     default:
