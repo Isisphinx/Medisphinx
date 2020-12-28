@@ -29,12 +29,7 @@ const MyPatientName = () => {
             <AddIcon/>
         </IconButton>
       </Grid>
-      <Grid
-      container
-      justify="center"
-      alignItems="center">
       <MyPatientNameList/>
-      </Grid>
     </div>)
 }
 
