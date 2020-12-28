@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import MyDateofBirth from '../components/myDateofBirth'
 import MyPatientName from '../components/myPatientName'
+import Grid from '@material-ui/core/Grid'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -118,6 +119,10 @@ export default function HorizontalLinearStepper() {
           <div>
             <div>{getStepContent(activeStep)}</div>
             <div>
+            <Grid
+        container
+        justify="center"
+        alignItems="center">
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>
@@ -140,6 +145,7 @@ export default function HorizontalLinearStepper() {
               >
                 {activeStep === steps.length - 1 ? 'Finish' : 'Suivant'}
               </Button>
+              </Grid>
             </div>
           </div>
         )}
