@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import MyPatientName from './myPatientName'
 import MyDateofBirth from './myDateofBirth'
+import Grid from '@material-ui/core/Grid'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,8 +38,8 @@ function getStepContent(step) {
       return <MyPatientName/>
     case 2:
       return 'Dossiers';
-      case 4:
-          return 'Examen'
+    case 3:
+      return 'Examen'
     default:
       return 'Unknown step';
   }
@@ -83,13 +85,6 @@ export default function HorizontalNonLinearStepper() {
     setActiveStep(step);
   };
 
-  const handleComplete = () => {
-    const newCompleted = completed;
-    newCompleted[activeStep] = true;
-    setCompleted(newCompleted);
-    handleNext();
-  };
-
   const handleReset = () => {
     setActiveStep(0);
     setCompleted({});
@@ -119,6 +114,10 @@ export default function HorizontalNonLinearStepper() {
             {getStepContent(activeStep)}
             <p/>
             <div>
+            <Grid
+        container
+        justify="center"
+        alignItems="center">
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>
@@ -130,16 +129,7 @@ export default function HorizontalNonLinearStepper() {
               >
                 Next
               </Button>
-              {activeStep !== steps.length &&
-                (completed[activeStep] ? (
-                  <Typography variant="caption" className={classes.completed}>
-                    Step {activeStep + 1} already completed
-                  </Typography>
-                ) : (
-                  <Button variant="contained" color="primary" onClick={handleComplete}>
-                    {completedSteps() === totalSteps() - 1 ? 'Finish' : 'Complete Step'}
-                  </Button>
-                ))}
+              </Grid>
             </div>
           </div>
         )}
