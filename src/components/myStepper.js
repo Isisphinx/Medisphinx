@@ -2,12 +2,11 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
+import StepButton from '@material-ui/core/StepButton';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import MyDateofBirth from '../components/myDateofBirth'
-import MyPatientName from '../components/myPatientName'
-import Grid from '@material-ui/core/Grid'
+import MyPatientName from './myPatientName'
+import MyDateofBirth from './myDateofBirth'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,6 +15,9 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginRight: theme.spacing(1),
   },
+  completed: {
+    display: 'inline-block',
+  },
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
@@ -23,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Date de Naissance', 'Noms', 'Dossier', 'Examens'];
+  return ['Date de naissance', 'Nom', 'Dossier', 'Examen'];
 }
 
 function getStepContent(step) {
@@ -31,81 +33,113 @@ function getStepContent(step) {
     case 0:
       return <MyDateofBirth/>
     case 1:
-      return <MyPatientName/>;
+      return <MyPatientName/>
     case 2:
       return 'Dossiers';
-    case 3:
-      return 'Examen'
+      case 4:
+          return 'Examen'
     default:
       return 'Unknown step';
   }
 }
 
-export default function HorizontalLinearStepper() {
+export default function HorizontalNonLinearStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
+  const [completed, setCompleted] = React.useState({});
   const steps = getSteps();
 
-  const handleNext = () => {
-    let newSkipped = skipped;
+  const totalSteps = () => {
+    return steps.length;
+  };
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
+  const completedSteps = () => {
+    return Object.keys(completed).length;
+  };
+
+  const isLastStep = () => {
+    return activeStep === totalSteps() - 1;
+  };
+
+  const allStepsCompleted = () => {
+    return completedSteps() === totalSteps();
+  };
+
+  const handleNext = () => {
+    const newActiveStep =
+      isLastStep() && !allStepsCompleted()
+        ? // It's the last step, but not all steps have been completed,
+          // find the first step that has been completed
+          steps.findIndex((step, i) => !(i in completed))
+        : activeStep + 1;
+    setActiveStep(newActiveStep);
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+  const handleStep = (step) => () => {
+    setActiveStep(step);
+  };
+
+  const handleComplete = () => {
+    const newCompleted = completed;
+    newCompleted[activeStep] = true;
+    setCompleted(newCompleted);
+    handleNext();
+  };
+
   const handleReset = () => {
     setActiveStep(0);
+    setCompleted({});
   };
 
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep}>
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          return (
-            <Step key={label} {...stepProps}>
-              <StepLabel {...labelProps}>{label}</StepLabel>
-            </Step>
-          );
-        })}
+      <Stepper nonLinear activeStep={activeStep}>
+        {steps.map((label, index) => (
+          <Step key={label}>
+            <StepButton onClick={handleStep(index)} completed={completed[index]}>
+              {label}
+            </StepButton>
+          </Step>
+        ))}
       </Stepper>
       <div>
-        {activeStep === steps.length ? (
+        {allStepsCompleted() ? (
           <div>
             <Typography className={classes.instructions}>
               All steps completed - you&apos;re finished
             </Typography>
-            <Button onClick={handleReset} className={classes.button}>
-              Reset
-            </Button>
+            <Button onClick={handleReset}>Reset</Button>
           </div>
         ) : (
           <div>
-            <div>{getStepContent(activeStep)}</div>
+            {getStepContent(activeStep)}
+            <p/>
             <div>
-            <Grid
-        container
-        justify="center"
-        alignItems="center">
               <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
                 Back
               </Button>
-
               <Button
                 variant="contained"
                 color="primary"
                 onClick={handleNext}
                 className={classes.button}
               >
-                {activeStep === steps.length - 1 ? 'Finish' : 'Suivant'}
+                Next
               </Button>
-              </Grid>
+              {activeStep !== steps.length &&
+                (completed[activeStep] ? (
+                  <Typography variant="caption" className={classes.completed}>
+                    Step {activeStep + 1} already completed
+                  </Typography>
+                ) : (
+                  <Button variant="contained" color="primary" onClick={handleComplete}>
+                    {completedSteps() === totalSteps() - 1 ? 'Finish' : 'Complete Step'}
+                  </Button>
+                ))}
             </div>
           </div>
         )}
