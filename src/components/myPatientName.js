@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-const MyPatientName = () => {
+const MyPatientName = ({handlenext}) => {
     const classes = useStyles();
 
     return (<div className={classes.div}>
@@ -29,7 +29,7 @@ const MyPatientName = () => {
             <AddIcon/>
         </IconButton>
       </Grid>
-      <MyPatientNameList/>
+      <MyPatientNameList handlenext={handlenext}/>
     </div>)
 }
 

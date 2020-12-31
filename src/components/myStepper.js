@@ -30,21 +30,6 @@ function getSteps() {
   return ['Date de naissance', 'Nom', 'Dossier', 'Examen'];
 }
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <MyDateofBirth/>
-    case 1:
-      return <MyPatientName/>
-    case 2:
-      return 'Dossiers';
-    case 3:
-      return 'Examen'
-    default:
-      return 'Unknown step';
-  }
-}
-
 const MyStepper = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -66,6 +51,21 @@ const MyStepper = () => {
   const allStepsCompleted = () => {
     return completedSteps() === totalSteps();
   };
+
+  const getStepContent = (step) => {
+    switch (step) {
+      case 0:
+        return <MyDateofBirth/>
+      case 1:
+        return <MyPatientName handlenext={handleNext}/>
+      case 2:
+        return 'Dossiers';
+      case 3:
+        return 'Examen'
+      default:
+        return 'Unknown step';
+    }
+  }
 
   const handleNext = () => {
     const newActiveStep =
